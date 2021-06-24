@@ -5,6 +5,13 @@ use clightningrpc::responses::NetworkAddress;
 use clightningrpc::LightningRPC;
 use rstest::*;
 use std::path::Path;
+use std::{thread, time};
+
+// FIXME(vincenzopalazzo) Move this in a utils test
+fn wait_for(millisecond: u64) {
+    let ten_millis = time::Duration::from_millis(10);
+    thread::sleep(ten_millis);
+}
 
 #[fixture]
 pub fn lightningd() -> LightningRPC {
